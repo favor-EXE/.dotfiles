@@ -1,0 +1,179 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+let s:shortmess_save = &shortmess
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +99 .config/awesome/rc.lua
+argglobal
+%argdel
+edit .config/awesome/rc.lua
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+25,27fold
+24,27fold
+38,40fold
+33,41fold
+31,42fold
+67,83fold
+89,94fold
+97,101fold
+103,104fold
+121,122fold
+120,124fold
+127,128fold
+126,130fold
+118,133fold
+137,138fold
+140,143fold
+139,144fold
+136,146fold
+147,149fold
+150,152fold
+153,155fold
+135,155fold
+162,163fold
+159,165fold
+157,166fold
+184,188fold
+190,193fold
+197,200fold
+209,213fold
+216,221fold
+207,222fold
+172,223fold
+228,231fold
+237,238fold
+239,240fold
+241,242fold
+243,244fold
+247,248fold
+246,250fold
+253,254fold
+252,256fold
+258,259fold
+262,263fold
+264,265fold
+266,267fold
+268,269fold
+270,271fold
+275,276fold
+273,277fold
+272,279fold
+282,283fold
+286,287fold
+288,289fold
+293,294fold
+295,296fold
+297,298fold
+299,300fold
+301,302fold
+303,304fold
+305,306fold
+307,308fold
+315,316fold
+311,318fold
+310,320fold
+323,324fold
+327,333fold
+326,335fold
+339,340fold
+236,340fold
+345,347fold
+344,349fold
+350,351fold
+352,353fold
+354,355fold
+356,357fold
+358,359fold
+360,361fold
+363,366fold
+362,368fold
+370,372fold
+369,374fold
+376,378fold
+375,380fold
+382,384fold
+381,386fold
+343,386fold
+399,400fold
+396,401fold
+395,403fold
+409,410fold
+406,411fold
+405,413fold
+419,420fold
+417,421fold
+416,422fold
+415,424fold
+430,431fold
+428,432fold
+427,433fold
+426,435fold
+393,435fold
+392,436fold
+440,441fold
+443,445fold
+447,449fold
+439,450fold
+462,469fold
+461,470fold
+475,478fold
+480,490fold
+494,495fold
+497,500fold
+474,502fold
+505,506fold
+459,511fold
+522,526fold
+517,527fold
+534,536fold
+538,540fold
+533,541fold
+545,548fold
+551,553fold
+550,556fold
+558,564fold
+544,566fold
+531,567fold
+571,572fold
+let &fdl = &fdl
+let s:l = 101 - ((17 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 101
+normal! 026|
+lcd ~/.config/awesome
+tabnext 1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20
+let &shortmess = s:shortmess_save
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

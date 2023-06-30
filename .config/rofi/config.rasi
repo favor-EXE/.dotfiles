@@ -1,0 +1,33 @@
+@import "~/.cache/wal/colors-rofi-dark"
+
+configuration {
+  location: 0;
+  display-drun: "Applications";
+  display-run: "Run";
+  display-window: "Windows";
+  display-filebrowser: "Files";
+  display-search: "Search";
+  // drun-display-format: "{name} [<span size='small'><i>({generic})</i></span>]";
+  drun-display-format: "{name}";
+  window-format: "{w} - {c} {t}";
+  // font: "JetBrainsMono Nerd Font Mono 12";
+  font: "FiraCode Nerd Font 11";
+  modi: "window,run,drun,filebrowser";
+  // fixed-num-lines: false;
+  terminal: "urxvt";
+  show-icons: false;
+
+window {
+  // anchor: center;
+  // location: center;
+  width: 550;
+  height: 120;
+  border: 0 0 0 0;
+  padding: 0;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+ }
+}

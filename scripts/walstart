@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+$HOME/.config/polybar/hack/scripts/pywal.sh $HOME/wallpapers/random/
+feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
+
+killall dunst &&
+dunst &
+wal-discord &
+notify-send "Pywal Has Changed Colors"
+
